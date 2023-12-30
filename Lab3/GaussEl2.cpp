@@ -32,6 +32,7 @@ void ForwardElimination(float **a, int n)
             cout << "Mathematical Error!" << endl;
             exit(0);
         }
+        
         for (int j = i+1; j <= n; j++)
         {
             fact = a[j][i] / a[i][i];
@@ -48,6 +49,7 @@ void BackwarsSubs(float *x, float **a, int n)
         x[i] = a[i][n + 1];
         for (int j = i + 1; j <= n; j++)
             x[i] = x[i] - a[i][j] * x[j];
+
         x[i] = x[i] / a[i][i];
     }
 }
@@ -62,8 +64,9 @@ int main()
 {
     int n;
     n = getNum();
-    
+
     // dynamically allocate new memory for 2d array
+
     float *x = new float[n + 1]; 
     float **a = new float *[n+1];
 
@@ -71,17 +74,22 @@ int main()
         a[i] = new float[n + 2];
 
     input(a, n);
+
     ForwardElimination(a, n);
+
     x[n] = a[n][n + 1] / a[n][n];
+
     BackwarsSubs(x, a, n);
+
     cout << "Solution: " << endl;
     output(x, n);
 
     // delete dynamically allocated memory
+
     delete[] x;
+
     for (int i = 1; i <= n; i++)
-    {
         delete[] a[i];
-    }
+
     delete[] a;
 }
