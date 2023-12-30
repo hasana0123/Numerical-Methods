@@ -1,4 +1,5 @@
 #include <iostream>
+#include<iomanip>
 
 using namespace std;
 
@@ -40,6 +41,21 @@ void ForwardElimination(float **a, int n)
                 a[j][k] = a[j][k] - fact * a[i][k];
         }
     }
+
+}
+
+void upperTriangular(float **a,int n)
+{
+    cout<<endl;
+    for(int i=1;i<=n;i++)
+    {
+        for(int j =1;j<=n+1;j++)
+        {
+            cout<<"a"<<i<<j<<"="<<setw(7)<<setprecision(4)<<a[i][j]<<"|";
+        }
+        cout<<endl;
+    }
+     cout<<endl;
 }
 
 void BackwarsSubs(float *x, float **a, int n)
@@ -76,6 +92,7 @@ int main()
     input(a, n);
 
     ForwardElimination(a, n);
+    upperTriangular(a,n);
 
     x[n] = a[n][n + 1] / a[n][n];
 
