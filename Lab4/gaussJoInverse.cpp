@@ -72,7 +72,8 @@ void identity(float **c, int n)
                 cout << ":"
                      << "a" << i << j << "= " << left << setw(15) << setprecision(4) << c[i][j];
             }
-            cout << "a" << i << j << "= " << left << setw(15) << setprecision(4) << c[i][j];
+            else
+                cout << "a" << i << j << "= " << left << setw(15) << setprecision(4) << c[i][j];
         }
         cout << endl;
     }
@@ -84,9 +85,9 @@ void output(float **c, int n)
     {
         for (int j = n + 1; j <= 2 * n; j++)
         {
-            cout << "a" << i << "=" <<left<<setw(15)<<setprecision(4)<< c[i][j];
+            cout << "a" << i << "=" << left << setw(15) << setprecision(4) << c[i][j];
         }
-        cout<<endl;
+        cout << endl;
     }
 }
 
@@ -112,7 +113,7 @@ int main()
 
     for (int i = 1; i <= n; i++)
     {
-        for (int j = 0; j <= n; j++)
+        for (int j = 1; j <= n; j++)
         {
             if (i == j)
                 b[i][j] = 1;
@@ -126,8 +127,8 @@ int main()
     augmentedMat(a, b, c, n);
     cout << "Forward Elimination" << endl;
     ForwardElimination(c, n);
-    cout<<"Identity matrix"<<endl;
-    identity(c,n);
+    cout << "Identity matrix" << endl;
+    identity(c, n);
     cout << "Solution:" << endl;
     output(c, n);
 
